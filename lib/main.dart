@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tgb/jogadores.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,21 +17,28 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
 
-      home: MyHomePage(title: appTitle),
+      home: MyHomePages(),
 
     );
   }
+
+
+}
+class MyHomePages extends StatefulWidget {
+
+  @override
+  MyHomePage createState() => MyHomePage();
+
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
+class MyHomePage extends State<MyHomePages> {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
-  MyHomePage({Key key, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text("meu app porra")),
       body: Center(child: Text('Se Fuder')),
       drawer: Drawer(
 
@@ -78,5 +86,35 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+
+
+
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+
+
+
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+  }
+
+
+
+
 }
 
