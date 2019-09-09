@@ -1,6 +1,7 @@
-# tgb
+# THE GOOD BOYS
 
-app do tgb
+Aplicativo do The Good Boys em desenvolvimento.
+Aplicativo sendo desenvolvido para aprendizado da linguagem Dart, com FW Flutter.
 
 ## Getting Started
 
