@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class Jogadores extends StatefulWidget {
+class Jogador extends StatefulWidget {
 
 
 
@@ -16,7 +16,7 @@ class Jogadores extends StatefulWidget {
 }
 
 
-class Jog extends State<Jogadores> {
+class Jog extends State<Jogador> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   List data;
   List nome;
